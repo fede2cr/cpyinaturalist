@@ -20,6 +20,8 @@ cp cpyinaturalist.py /media/$USER/CIRCUITPY # Example for Gnu/Linux
 
 Go to ``examples`` and find a code.py compatible with Adafruit Funhouse.
 
+![Funhouse example](doc/imgs/funhouse.jpg)
+
 ## What can you do?
 
 So far:
