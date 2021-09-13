@@ -37,13 +37,23 @@ So far:
 - Get a list of observations by running:
 
 ```
+observations = Cpyinaturalist.get_observations(inat)
+```
+
+By user:
+```
 observations = Cpyinaturalist.get_observations(inat, user_id='fedecrc')
+```
+
+By project:
+```
+observations = Cpyinaturalist.get_observations(inat, project='parque-nacional-isla-del-coco')
 ```
 
 - Download an image from an observation:
 
 ```
-Cpyinaturalist.get_image(inat, result["photos"][0]["small_url"])
+Cpyinaturalist.get_image(inat, observations[0]["photos"][0]["small_url"])
 ```
 
 It uses adafruit_io to transform the image from JPEG to BMP to the resolution of the board you are using, and downloads it to a filename.

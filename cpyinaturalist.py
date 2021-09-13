@@ -21,12 +21,20 @@ class Cpyinaturalist(object):
         self.socket_pool = socketpool.SocketPool(wifi.radio)
         self.requests = adafruit_requests.Session(self.socket_pool, ssl.create_default_context())
 
-    def get_observations(self, user_id):
-        url = 'https://www.inaturalist.org/observations.json/?user_id=' + user_id
-        #response = requests.get(url,headers=alflib.headers)
+    def get_observations(self, user_id=None, project=None, taxon_id=None, iconic_taxa=None, quality_grade=None):
+        url_add = ''
+        if user_id == project == taxon_id == iconic_taxa == quality_grade ==None:
+            url = 'https://www.inaturalist.org/observations.json/'
+        else:
+            url = 'https://www.inaturalist.org/observations.json/?'
+            if user_id != None:
+                url_add=url_add + 'user_id=' + user_id
+                url = url + url_add
+            if project != None:
+                url = 'https://www.inaturalist.org/observations/project/' + project + '.json'
+        print(url)
         response = self.requests.get(url)
         result = json.loads(response.text)
-        #print(result[0])
         return(result)
 
 
@@ -74,6 +82,6 @@ class Cpyinaturalist(object):
         conv_url = "https://io.adafruit.com/api/v2/"+secrets.secrets["aio_username"]+"/integrations/image-formatter?x-aio-key="+secrets.secrets["aio_key"]+"&width=240&height=240&output=BMP8&url="+imgurl
         print(conv_url)
         storage.remount("/", False)
-        self.wget(conv_url, '/purple.bmp', chunk_size=4096)
+        self.wget(conv_url, '/inat.bmp', chunk_size=4096)
         storage.remount("/", True)
 
