@@ -3,7 +3,7 @@ CircuitPython library for the iNaturalist API
 
 ## What is this?
 
-This is a library to managing the iNaturalist API for CircuitPython 6. It is intended to be compatible with [niconoe Pyinaturalist](https://github.com/niconoe/pyinaturalist), but it is not yet.
+This is a library to managing the iNaturalist API for CircuitPython 6 and 7. It is intended to be compatible with [niconoe Pyinaturalist](https://github.com/niconoe/pyinaturalist), but it is not yet.
 
 ## Compatible boards
 
